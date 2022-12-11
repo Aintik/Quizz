@@ -189,7 +189,7 @@ const giveCertif = async (req, res) => {
   const user = await Users.findById(req.user.id, "name surname certificates");
   const name = user.name + " " + user.surname;
   const subject = req.body.sub;
-  let percent = user.certificates.find((elem) => elem.subject == subject).score;
+  let percent = user.certificates.find((elem) => elem.subject == subject).score + "%";
   if (percent == null) percent = "0%";
   const writeStream = fs.createWriteStream(`./public/${name}.pdf`);
 
